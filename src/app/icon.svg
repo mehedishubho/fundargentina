@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Light blue stripe (top) -->
+  <rect width="32" height="10.67" fill="#74ACDF"/>
+  <!-- White stripe (middle) -->
+  <rect y="10.67" width="32" height="10.66" fill="#FFFFFF"/>
+  <!-- Light blue stripe (bottom) -->
+  <rect y="21.33" width="32" height="10.67" fill="#74ACDF"/>
+  <!-- Sun of May -->
+  <circle cx="16" cy="16" r="4" fill="#F6B40E"/>
+  <!-- Sun rays -->
+  <g fill="#F6B40E">
+    <rect x="15.25" y="9" width="1.5" height="2.5" rx="0.5"/>
+    <rect x="15.25" y="20.5" width="1.5" height="2.5" rx="0.5"/>
+    <rect x="9" y="15.25" width="2.5" height="1.5" rx="0.5"/>
+    <rect x="20.5" y="15.25" width="2.5" height="1.5" rx="0.5"/>
+    <rect x="11" y="10.5" width="1.5" height="2.5" rx="0.5" transform="rotate(-45 11.75 11.75)"/>
+    <rect x="19.5" y="19" width="1.5" height="2.5" rx="0.5" transform="rotate(-45 20.25 20.25)"/>
+    <rect x="19.5" y="10.5" width="1.5" height="2.5" rx="0.5" transform="rotate(45 20.25 11.75)"/>
+    <rect x="11" y="19" width="1.5" height="2.5" rx="0.5" transform="rotate(45 11.75 20.25)"/>
+  </g>
+</svg>
