@@ -127,6 +127,7 @@ export const activityFeedItems: ActivityFeedItem[] = [
 export const matchTimeline: MatchTimelineItem[] = [
   {
     matchday: 1,
+    stage: "Group J — Matchday 1",
     date: "Jun 16, 2026",
     opponent: "Algeria",
     result: "3 - 0",
@@ -137,6 +138,7 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 2,
+    stage: "Group J — Matchday 2",
     date: "Jun 22, 2026",
     opponent: "Austria",
     result: "2 - 0",
@@ -147,6 +149,7 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 3,
+    stage: "Group J — Matchday 3",
     date: "Jun 27, 2026",
     opponent: "Jordan",
     result: "3 - 1",
@@ -157,6 +160,7 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 4,
+    stage: "Round of 32",
     date: "Jul 3, 2026",
     opponent: "Cape Verde",
     result: "3 - 2 (a.e.t.)",
@@ -167,6 +171,7 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 5,
+    stage: "Round of 16",
     date: "Jul 7, 2026",
     opponent: "Egypt",
     result: "3 - 2",
@@ -177,6 +182,7 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 6,
+    stage: "Quarter-final",
     date: "Jul 11, 2026",
     opponent: "Switzerland",
     result: "3 - 1 (a.e.t.)",
@@ -187,11 +193,23 @@ export const matchTimeline: MatchTimelineItem[] = [
   },
   {
     matchday: 7,
+    stage: "Semi-final",
     date: "Jul 15, 2026",
     opponent: "England",
+    result: "2 - 1",
+    moneySpent: 4500000,
+    purpose: "Semi-final destiny insurance + last-minute comeback bribe",
+    emoji: "🏆",
+    status: "completed",
+  },
+  {
+    matchday: 8,
+    stage: "FINAL",
+    date: "Jul 19, 2026",
+    opponent: "Spain",
     result: "TBD",
     moneySpent: 0,
-    purpose: "Semi-final fate still undetermined",
+    purpose: "The ultimate showdown — your donations decide destiny",
     emoji: "🏆",
     status: "upcoming",
   },

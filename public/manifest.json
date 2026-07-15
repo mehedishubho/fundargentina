@@ -1,0 +1,16 @@
+{
+  "name": "Fund Argentina — The World's Most Important Fake Fundraiser",
+  "short_name": "Fund Argentina",
+  "description": "The internet's most professional fake fundraising campaign dedicated to helping Argentina win the 2026 FIFA World Cup through imaginary donations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

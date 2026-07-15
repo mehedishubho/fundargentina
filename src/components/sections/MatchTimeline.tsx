@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { matchTimeline } from "@/lib/data";
+import { Trophy } from "lucide-react";
 
 function formatMoney(amount: number): string {
   if (amount >= 1000000) {
@@ -23,6 +24,7 @@ function TimelineNode({
   prefersReducedMotion: boolean;
 }) {
   const isUpcoming = item.status === "upcoming";
+  const isFinal = item.stage === "FINAL";
 
   return (
     <motion.div
@@ -42,46 +44,57 @@ function TimelineNode({
       <motion.div
         whileHover={prefersReducedMotion ? {} : { scale: 1.03, y: -4 }}
         transition={{ duration: 0.3 }}
-        className={`relative w-full max-w-md rounded-2xl p-6 border transition-all duration-300 ${
-          isUpcoming
-            ? "bg-gradient-to-br from-sky-blue/10 to-gold/10 border-sky-blue/30 shadow-[0_0_30px_rgba(110,193,255,0.15)]"
-            : "bg-white border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-sky-blue/20"
+        className={`relative w-full rounded-2xl p-6 border transition-all duration-300 ${
+          isFinal && isUpcoming
+            ? "max-w-lg bg-gradient-to-br from-gold/20 via-white to-gold/20 border-gold/40 shadow-[0_0_60px_rgba(245,166,35,0.2)]"
+            : isUpcoming
+            ? "max-w-md bg-gradient-to-br from-sky-blue/10 to-gold/10 border-sky-blue/30 shadow-[0_0_30px_rgba(110,193,255,0.15)]"
+            : "max-w-md bg-white border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-sky-blue/20"
         }`}
       >
-        {isUpcoming && (
-          <motion.div
-            animate={prefersReducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute -top-3 right-4 px-3 py-1 bg-gold text-navy text-xs font-bold rounded-full"
+        {/* Stage badge */}
+        <div className="flex items-center justify-between mb-4">
+          <span
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+              isFinal
+                ? "bg-gradient-to-r from-gold to-amber-400 text-navy"
+                : isUpcoming
+                ? "bg-sky-blue/20 text-sky-blue"
+                : "bg-navy/5 text-navy"
+            }`}
           >
-            UPCOMING
-          </motion.div>
-        )}
+            {isFinal && <Trophy className="w-3 h-3" />}
+            {item.stage}
+          </span>
+          {isUpcoming && (
+            <motion.div
+              animate={prefersReducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="px-3 py-1 bg-gold text-navy text-xs font-bold rounded-full"
+            >
+              {isFinal ? "MATCH DAY" : "UPCOMING"}
+            </motion.div>
+          )}
+        </div>
 
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <motion.span
               whileHover={prefersReducedMotion ? {} : { scale: 1.2, rotate: [0, -10, 10, 0] }}
               className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${
-                isUpcoming ? "bg-gold/20" : "bg-[#f1f5f9]"
+                isFinal ? "bg-gold/30" : isUpcoming ? "bg-gold/20" : "bg-[#f1f5f9]"
               }`}
             >
               {item.emoji}
             </motion.span>
             <div>
               <span className="text-xs font-semibold tracking-wider uppercase text-sky-blue">
-                Matchday {item.matchday}
+                {item.date}
               </span>
-              <p className="text-sm text-slate-400 mt-0.5">{item.date}</p>
+              <p className={`font-bold mt-0.5 ${isFinal ? "text-lg text-navy" : "text-base text-slate-600"}`}>
+                Argentina vs {item.opponent}
+              </p>
             </div>
-          </div>
-          <div
-            className={`text-right px-3 py-1.5 rounded-lg ${
-              isUpcoming ? "bg-gold/20 text-gold" : "bg-navy/5 text-navy"
-            }`}
-          >
-            <span className="text-xs font-semibold">vs</span>
-            <span className="block text-base font-bold">{item.opponent}</span>
           </div>
         </div>
 
@@ -89,7 +102,7 @@ function TimelineNode({
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-slate-500">Result</span>
             <span
-              className={`text-lg font-bold ${
+              className={`font-bold ${isFinal ? "text-xl" : "text-lg"} ${
                 isUpcoming
                   ? "text-gold"
                   : item.result.includes("W") || !item.result.includes("L")
@@ -100,19 +113,21 @@ function TimelineNode({
               {item.result}
             </span>
           </div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-slate-500">Money Sent</span>
-            <span className="text-lg font-bold text-sky-blue">
-              {isUpcoming ? "???" : formatMoney(item.moneySpent)}
-            </span>
-          </div>
+          {!isUpcoming && (
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-slate-500">Money Sent</span>
+              <span className={`font-bold text-sky-blue ${isFinal ? "text-xl" : "text-lg"}`}>
+                {formatMoney(item.moneySpent)}
+              </span>
+            </div>
+          )}
         </div>
 
-        <div className="pt-4 border-t border-slate-100">
-          <p className="text-sm text-slate-500 italic">
+        <div className={`pt-4 border-t ${isFinal ? "border-gold/20" : "border-slate-100"}`}>
+          <p className={`text-sm ${isFinal ? "text-navy font-medium" : "text-slate-500 italic"}`}>
             {isUpcoming ? (
               <span className="text-gold font-medium not-italic">
-                Donate now to help Argentina prepare! 🙏
+                {isFinal ? "The ultimate showdown — every donation counts!" : "Donate now to help Argentina prepare!"}
               </span>
             ) : (
               item.purpose

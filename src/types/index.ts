@@ -31,6 +31,7 @@ export interface ActivityFeedItem {
 
 export interface MatchTimelineItem {
   matchday: number;
+  stage: string;
   date: string;
   opponent: string;
   result: string;
