@@ -4,6 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+function ArgentinaLogo() {
+  return (
+    <svg viewBox="0 0 40 28" className="w-10 h-7" aria-label="Argentina flag">
+      <rect y="0" width="40" height="9.33" fill="#74ACDF" />
+      <rect y="9.33" width="40" height="9.34" fill="white" />
+      <rect y="18.67" width="40" height="9.33" fill="#74ACDF" />
+      <circle cx="20" cy="14" r="4" fill="#F6B40E" />
+    </svg>
+  );
+}
+
 export function Navbar({ onDonate }: { onDonate?: () => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -19,9 +30,7 @@ export function Navbar({ onDonate }: { onDonate?: () => void }) {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2.5">
-            <span className="text-xl" role="img" aria-label="Argentina flag">
-              🇦🇷
-            </span>
+            <ArgentinaLogo />
             <span className="text-base font-bold text-white tracking-tight">
               Fund <span className="text-sky-blue">Argentina</span>
             </span>
