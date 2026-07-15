@@ -7,6 +7,7 @@ import { ProgressBar } from "@/components/sections/ProgressBar";
 import { DonationCards } from "@/components/sections/DonationCards";
 import { DonationModal } from "@/components/sections/DonationModal";
 import { ExpenseBreakdown } from "@/components/sections/ExpenseBreakdown";
+import { MatchTimeline } from "@/components/sections/MatchTimeline";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { ActivityFeed } from "@/components/sections/ActivityFeed";
@@ -43,6 +44,7 @@ export default function Home() {
         <Hero onDonate={() => openModal()} />
         <ProgressBar />
         <DonationCards onSelect={(amount) => openModal(amount)} />
+        <MatchTimeline />
         <ExpenseBreakdown />
         <Testimonials />
         <ActivityFeed />

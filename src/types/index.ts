@@ -28,3 +28,14 @@ export interface ActivityFeedItem {
   action: string;
   amount?: number;
 }
+
+export interface MatchTimelineItem {
+  matchday: number;
+  date: string;
+  opponent: string;
+  result: string;
+  moneySpent: number;
+  purpose: string;
+  emoji: string;
+  status: "completed" | "upcoming";
+}
